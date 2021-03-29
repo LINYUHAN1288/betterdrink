@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/index/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "BetterDrink",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "van-button": "vant-weapp/dist/button/index",
+    "van-icon": "vant-weapp/dist/icon/index",
+    "van-dialog": "vant-weapp/dist/dialog/index",
+    "van-tabbar": "vant-weapp/dist/tabbar/index",
+    "van-tabbar-item": "vant-weapp/dist/tabbar-item/index"
+  }
+}
