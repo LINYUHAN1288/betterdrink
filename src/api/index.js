@@ -1,8 +1,8 @@
 import { get, post } from '../utils/request'
 
 const API_PREFIX = 'http://10.242.6.24:4000'
-const APP_ID = 'wx37254b1a897c735a'
-const APP_SECRET = '2bf0aa3cc75ca34125d0059e14b2ad50'
+const APP_ID = ''
+const APP_SECRET = ''
 
 export function getHomeData (openId) {
   return get(`${API_PREFIX}/book/home/v2`, { openId })

@@ -48,7 +48,6 @@ export function getUserOpenId (cb) {
         }
       },
       fail: () => {
-        console.log(1)
         setError('获取openId失败！')
       }
     })
