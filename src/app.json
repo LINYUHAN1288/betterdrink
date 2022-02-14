@@ -1,6 +1,20 @@
 {
   "pages": [
-    "pages/index/main"
+    "pages/index/main",
+    "pages/camera/main",
+    "pages/news/main",
+    "pages/me/main",
+    "pages/search/main",
+    "pages/cameraIndex/main",
+    "pages/price/main",
+    "pages/shelf/main",
+    "pages/detail/main",
+    "pages/setting/main",
+    "pages/list/main",
+    "pages/about/main",
+    "pages/suggest/main",
+    "pages/history/main",
+    "pages/historydetail/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -8,11 +22,71 @@
     "navigationBarTitleText": "BetterDrink",
     "navigationBarTextStyle": "black"
   },
+  "tabBar": {
+    "color": "#999",
+    "backgroundColor": "#fafafa",
+    "selectedColor": "#333",
+    "borderStyle": "white",
+
+    "list": [{
+      "text": "首页",
+      "pagePath": "pages/index/main",
+      "iconPath": "static/tabs/home.png",
+      "selectedIconPath": "static/tabs/home-active.png"
+    }, {
+      "text": "识别",
+      "pagePath": "pages/cameraIndex/main",
+      "iconPath": "static/tabs/camera.png",
+      "selectedIconPath": "static/tabs/camera-active.png"
+    },
+    {
+      "text": "分类",
+      "pagePath": "pages/news/main",
+      "iconPath": "static/tabs/category.png",
+      "selectedIconPath": "static/tabs/category-active.png"
+    },
+    {
+      "text": "我",
+      "pagePath": "pages/me/main",
+      "iconPath": "static/tabs/me.png",
+      "selectedIconPath": "static/tabs/me-active.png"
+    }],
+
+    "items": [{
+      "name": "首页",
+      "pagePath": "pages/index/main",
+      "icon": "static/tabs/home.png",
+      "activeIcon": "static/tabs/home-active.png"
+    }, {
+      "name": "识别",
+      "pagePath": "pages/cameraIndex/main",
+      "icon": "static/tabs/camera.png",
+      "activeIcon": "static/tabs/camera-active.png"
+    },
+    {
+      "name": "发现",
+      "pagePath": "pages/news/main",
+      "icon": "static/tabs/Search.png",
+      "activeIcon": "static/tabs/search-active.png"
+    },
+    {
+      "name": "我",
+      "pagePath": "pages/me/main",
+      "icon": "static/tabs/me.png",
+      "activeIcon": "static/tabs/me-active.png"
+    }],
+    "position": "bottom"
+  },
   "usingComponents": {
     "van-button": "vant-weapp/dist/button/index",
     "van-icon": "vant-weapp/dist/icon/index",
     "van-dialog": "vant-weapp/dist/dialog/index",
     "van-tabbar": "vant-weapp/dist/tabbar/index",
-    "van-tabbar-item": "vant-weapp/dist/tabbar-item/index"
+    "van-tabbar-item": "vant-weapp/dist/tabbar-item/index",
+    "van-cell": "vant-weapp/dist/cell/index",
+    "van-cell-group": "vant-weapp/dist/cell-group/index",
+    "van-rate": "vant-weapp/dist/rate/index",
+    "van-notice-bar": "vant-weapp/dist/notice-bar/index",
+    "van-field": "vant-weapp/dist/field/index"
   }
 }

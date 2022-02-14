@@ -4,30 +4,24 @@
       <div class="user-info">
         <div class="avatar-wrapper">
           <image-view
-            src="https://static.runoob.com/images/demo/demo4.jpg"
+            :src="userInfo.avatarUrl"
             round 
             mode="scaleToFill"
             height="100%"
           />
         </div>
-        <div class="nickname">{{'yuhan'}}</div>
-        <div class="shelf-text">酒柜中共有{{3}}瓶珍藏</div>
+        <div class="nickname">{{userInfo.nickName}}</div>
+        <div class="shelf-text">酒柜中共有{{num}}瓶珍藏</div>
         <div class="round-item"></div>
         <div class="shelf-text">特别精选</div>
       </div>
       <div class="drink-info">
         <div class="drink-wrapper">
-          <image-view
-            src="https://www.meijiu.com/ckeditor_assets/pictures/26696/content_u-equals-275871247816372185....jpg"
-          />
-          <image-view
-            src="https://www.meijiu.com/ckeditor_assets/pictures/26696/content_u-equals-275871247816372185....jpg"
-          />
-          <image-view
-            src="https://www.meijiu.com/ckeditor_assets/pictures/26696/content_u-equals-275871247816372185....jpg"
-          />
+          <div class="home-card-img" v-for="(item, index) in wineList" :key="index" @click="onWineClick(item)">
+            <image-view :src="item.cover"></image-view>
+          </div>
         </div>
-        <div class="shelf-wrapper">
+        <div class="shelf-wrapper" @click="gotoShelf">
           <div class="shelf">酒柜</div>
           <van-icon class="arrow" name="arrow"></van-icon>
         </div>
@@ -54,11 +48,24 @@ export default {
     signDay: {
       type: Number,
       default: 0
+    },
+    num: Number
+  },
+  computed: {
+    userInfo () {
+      return (this.data && this.data.userInfo) || {}
+    },
+    wineList () {
+      return (this.data && this.data.wineList) || {}
     }
   },
   methods: {
-    gotoShelf () {},
-    onDrinkClick () {},
+    gotoShelf () {
+      this.$router.push('/pages/shelf/main')
+    },
+    onWineClick (wine) {
+      this.$emit('onWineClick', wine)
+    },
     sign () {},
     onFeedBackClick () {
       Dialog.confirm({
@@ -87,7 +94,7 @@ export default {
       color: white;
       background-image: linear-gradient(90deg, #64515c 0%, #724a61 100%);
       border-radius: 15px;
-      padding: 20px 15px;
+      padding: 20px 15px 5px;
       .user-info {
         display: flex;
         align-items: center;
@@ -110,11 +117,15 @@ export default {
       }
       .drink-info {
         display: flex;
-        padding-top: 10px;
+        padding-top: 15px;
         .drink-wrapper {
           flex: 1;
           display: flex;
           justify-content: space-between;
+          .home-card-img {
+            width: 80px;
+            height: 105px;
+          }
         }
         .shelf-wrapper {
           flex: 0 0 auto;

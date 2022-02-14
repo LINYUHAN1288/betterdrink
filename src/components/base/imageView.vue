@@ -12,7 +12,7 @@
     />
     <img
       :class="round ? 'round image' : 'image'"
-      src="https://static.runoob.com/images/demo/demo4.jpg"
+      src="http://10.242.6.24/res/img/Biomedicine/80722c13708e6bd5092874e3dda743ef.jpg"
       :mode="mode"
       :lazy-load="lazyLoad"
       v-show="isLoading || error"
@@ -66,12 +66,10 @@ export default {
     onError () {
       this.error = true
       this.isLoading = false
-      console.log('onError')
     },
     onLoad () {
       this.isLoading = false
       this.error = false
-      console.log('onLoad')
     }
   }
 }

@@ -12,12 +12,14 @@
             :focus="focus"
             :disabled="disabled"
             :maxlength="limit"
-            :placeholder="hotSearch.length === 0 ? '拍照识别' : hotSearch"
+            :placeholder="hotSearch || '搜索'"
             v-model="searchWord"
-            @input="change"
+            @input="onChange"
+            @confirm="onConfirm"
             confirm-type="search"
           />
-          <van-icon 
+          <van-icon
+            v-if="searchWord.length > 0"
             class="clear"
             name="clear"
             size="16px"
@@ -33,7 +35,7 @@ export default {
   props: {
     focus: {
       type: Boolean,
-      default: true
+      default: false
     },
     disabled: {
       type: Boolean,
@@ -41,7 +43,7 @@ export default {
     },
     limit: {
       type: Number,
-      default: 10
+      default: 50
     },
     hotSearch: {
       type: String,
@@ -61,9 +63,22 @@ export default {
       this.searchWord = ''
       this.$emit('onClear')
     },
-    onChange (e) {
-      const { value } = e.mp.detail
+    onChange (v) {
+      let value = v.mp.detail.value
+      if (value.length > this.limit) {
+        value = value.slice(0, this.limit)
+        this.searchWord = this.searchWord.slice(0, this.limit)
+      }
       this.$emit('onChange', value)
+    },
+    onConfirm (v) {
+      this.$emit('onConfirm', v.mp.detail.value)
+    },
+    setValue (v) {
+      this.searchWord = v
+    },
+    getValue () {
+      return this.searchWord
     }
   }
 
@@ -71,38 +86,38 @@ export default {
 </script>
 
 <style lang="less" scoped>
-    .searchbar {
-        padding: 10px 15px;
-        height: 40px;
-        .wrapper {
-            display: flex;
-            background: #F5F7F9;
-            border-radius: 20px;
-            width: 100%;
-            height: 100%;
-            box-sizing: border-box;
-            padding: 2px 15px;
-            .search {
-              display: flex;
-              align-items: center;
-              height: 100%; 
-            }
-            .searchInput {
-              flex: 1;
-              height: 100%;
-              color: #333;
-              font-size: 14px;
-              margin-left: 5px;
-              background: transparent;
-            }
-            .clear {
-              display: flex;
-              align-items: center;
-              height: 100%; 
-              &:active {
-                opacity: .7;
-              }
-            }
+  .searchbar {
+    padding: 10px 15px;
+    height: 40px;
+    .wrapper {
+      display: flex;
+      background: #F5F7F9;
+      border-radius: 20px;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 2px 15px;
+      .search {
+        display: flex;
+        align-items: center;
+        height: 100%; 
+      }
+      .searchInput {
+        flex: 1;
+        height: 100%;
+        color: #333;
+        font-size: 14px;
+        margin-left: 5px;
+        background: transparent;
+      }
+      .clear {
+        display: flex;
+        align-items: center;
+        height: 100%; 
+        &:active {
+          opacity: .7;
         }
+      }
     }
+  }
 </style>

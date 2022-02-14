@@ -1,8 +1,8 @@
 <template>
-    <div class="cameraButton" @click="onClick">
+    <div class="cameraButton">
         <div class="img" :style="{backgroundImage: 'url(' + img + ')'}">
             <div class="title">{{title}}</div>
-            <div class="sub-title">{{subTitle}}</div>
+            <div class="sub-title" @click="onButtonClick">{{subTitle}}</div>
         </div>
     </div>
 </template>
@@ -15,8 +15,8 @@ export default {
     img: String
   },
   methods: {
-    onClick () {
-      this.$emit('onClick')
+    onButtonClick () {
+      this.$router.push('/pages/camera/main')
     }
   }
 }

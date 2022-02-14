@@ -17,12 +17,12 @@
           >
             <image-view :src="wine.cover"></image-view>
             <div class="wine-title-wrapper wine-title-col" v-if="mode === modeCol">
-              <div class="wine-title">波尔多</div>
+              <div class="wine-title">{{wine.title}}</div>
             </div>
             <div class="wine-title-wrapper wine-title-row" v-else>
-              <div class="wine-title">波尔多</div>
-              <div class="wine-title wine-author">大卫</div>
-              <div class="wine-title wine-author">{{wine.categoryText}}</div>
+              <div class="wine-title">{{wine.title}}</div>
+              <div class="wine-title wine-author">{{wine.author}}</div>
+              <div class="wine-title wine-author">{{wine.publisher}}</div>
             </div>
           </div>
           <div
@@ -31,7 +31,7 @@
             v-else
           >
             <div class="category-text">{{wine.text}}</div>
-            <div class="category-num">{{wine.num}}本书</div>
+            <div class="category-num">{{wine.num}}款</div>
             <div class="category-img-wrapper">
               <div class="category-img1">
                 <image-view :src="wine.cover"></image-view>
@@ -49,7 +49,7 @@
         round
         custom-class="home-wine-btn"
         @click="onMoreClick"
-      >换一换</van-button>
+      >{{btnText}}</van-button>
     </div>
   </div>
 </template>
@@ -198,6 +198,51 @@ export default {
                 margin-top: 3px;
                 max-height: 14px;
               }
+            }
+          }
+        }
+        .category-wrapper {
+          position: relative;
+          display: flex;
+          background: #f5f5f5;
+          border-radius: 10px;
+          height: 120px;
+          padding: 15px;
+          box-sizing: border-box;
+
+          .category-text {
+            flex: 1;
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+          }
+
+          .category-num {
+            font-size: 12px;
+            color: #999;
+          }
+
+          .category-img-wrapper {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border-radius: 0 0 10px 0;
+
+            .category-img1 {
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              z-index: 100;
+              width: 60px;
+              border-radius: 0 0 10px 0;
+            }
+
+            .category-img2 {
+              position: absolute;
+              right: 30px;
+              bottom: 0;
+              z-index: 90;
+              width: 50px;
             }
           }
         }
